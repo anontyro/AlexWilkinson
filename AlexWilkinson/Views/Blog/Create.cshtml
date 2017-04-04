@@ -1,0 +1,85 @@
+@model AlexWilkinson.Models.Blog
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Blog</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Title" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="UrlSlug" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="UrlSlug" class="form-control" />
+                <span asp-validation-for="UrlSlug" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Author" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Author" class="form-control" />
+                <span asp-validation-for="Author" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CoverImg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CoverImg" class="form-control" />
+                <span asp-validation-for="CoverImg" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Body" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Body" class="form-control" />
+                <span asp-validation-for="Body" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Created" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Created" class="form-control" />
+                <span asp-validation-for="Created" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Published" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Published" class="form-control" />
+                <span asp-validation-for="Published" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="Draft" />
+                    <label asp-for="Draft"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
