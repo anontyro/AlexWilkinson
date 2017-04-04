@@ -16,7 +16,7 @@ namespace AlexWilkinson.Models
         {
             _context = context;    
         }
-
+        
         // GET: Blog
         [AllowAnonymous]
         public async Task<IActionResult> Index()
