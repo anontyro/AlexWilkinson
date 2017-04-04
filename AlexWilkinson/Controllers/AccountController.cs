@@ -64,6 +64,14 @@ namespace AlexWilkinson.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
+
+                var userid = _userManager.FindByEmailAsync(model.Email);
+                if (!await _userManager.IsEmailConfirmedAsync(userid.Result))
+                {
+                    ModelState.AddModelError(string.Empty, "Email not verrified");
+                    return View(model);
+                }
+
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
@@ -116,6 +124,13 @@ namespace AlexWilkinson.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    //prevents auto login when email is not validated
+                    var userid = _userManager.FindByEmailAsync(model.Email);
+                    if (!await _userManager.IsEmailConfirmedAsync(userid.Result))
+                    {
+                        ModelState.AddModelError("email", "Email not verrified");
+                        return View(model);
+                    }
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=532713
                     // Send an email with this link
                     //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

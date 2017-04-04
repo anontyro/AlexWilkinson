@@ -1,14 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AlexWilkinson.Data;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace AlexWilkinson.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly ApplicationDbContext _context;
+
+        public HomeController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<IActionResult> Index()
         {
             return View();
         }
@@ -33,3 +38,10 @@ namespace AlexWilkinson.Controllers
         }
     }
 }
+
+/*
+public IActionResult Index()
+{
+    return View();
+}
+*/

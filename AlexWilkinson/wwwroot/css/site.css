@@ -48,3 +48,24 @@ textarea {
         display: none;
     }
 }
+
+footer {
+    margin: auto;
+    width: 100%;
+    position: absolute;
+    bottom:0;
+}
+footer a {
+        color: lightslategrey;
+        text-decoration: none;
+}
+footer a:hover, a:focus{
+    text-decoration: none;
+}
+#footer-social-media{
+    padding-bottom: 10px;
+}
+footer p{
+
+    color: lightslategrey;
+}

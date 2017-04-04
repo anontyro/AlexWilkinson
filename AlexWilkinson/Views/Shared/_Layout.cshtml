@@ -7,6 +7,8 @@
     <title>@ViewData["Title"] - AlexWilkinson</title>
 
     <environment names="Development">
+        <script src="https://use.fontawesome.com/070c9f5eec.js"></script>
+
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
@@ -43,11 +45,33 @@
     </nav>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2017 - AlexWilkinson</p>
-        </footer>
+        
     </div>
+        <footer class="text-center">
+            <hr />
+            <div id="footer-social-media">
+                <a href="https://facebook.com/AWILKINSON.SG" target="blank">
+                    <i class="fa fa-facebook-square fa-3x"></i>
+                </a>
+
+                <a href="https://sg.linkedin.com/in/wilkinsonalexander" target="blank">
+                    <i class="fa fa-linkedin-square fa-3x"></i>
+                </a>
+
+                <a href="https://github.com/anontyro" target="blank">
+                    <i class="fa fa-github-square fa-3x"></i>
+                </a>
+
+                <a href="https://twitter.com/alexwilkinson" target="blank">
+                    <i class="fa fa-twitter-square fa-3x"></i>
+                </a>
+            </div>
+            <p>&copy; @DateTime.Now.ToString("MMMM yyyy") - AlexWilkinson</p>
+
+
+
+</footer>
+
 
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -72,4 +96,6 @@
 
     @RenderSection("Scripts", required: false)
 </body>
+
 </html>
+
