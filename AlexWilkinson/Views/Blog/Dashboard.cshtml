@@ -55,7 +55,15 @@
                 @Html.DisplayFor(modelItem => item.CoverImg)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Body)
+                @if (item.Body.Length > 200)
+                {
+                    var stub = item.Body.Substring(0, 200);
+                    @Html.DisplayFor(modelItem => stub)
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => item.Body)
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Created)

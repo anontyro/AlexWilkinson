@@ -2,8 +2,10 @@ using AlexWilkinson.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Sakura.AspNetCore;
 
 namespace AlexWilkinson.Models
 {
@@ -19,9 +21,53 @@ namespace AlexWilkinson.Models
         
         // GET: Blog
         [AllowAnonymous]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(await _context.Blog.ToListAsync());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = string.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Title" ? "title_desc" : "Title";
+
+            if(searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            //Linq queries to the database on how to display the data
+            var posts = from p in _context.Blog
+                        where p.Draft == false //checks that the post is not a draft
+                        where p.Published <= DateTime.Today //checks it is published
+                        select p;
+
+            //Search function, checks title and body for the referance
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                posts = posts.Where(p => p.Title.Contains(searchString) 
+                                        || p.Body.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "title_desc":
+                    posts = posts.OrderByDescending(p => p.Title);
+                    break;
+                case "Date":
+                    posts = posts.OrderBy(p => p.Published);
+                    break;
+                default:
+                    posts = posts.OrderByDescending(p => p.Published);
+                    break;
+            }
+
+            int pageSize = 1;
+            int pageNumber = (page ?? 1); //if page is null return 1 else return page
+
+            return View(posts.ToPagedList(pageNumber, pageSize));
         }
 
         //Get : Blog/dashboard

@@ -1,5 +1,6 @@
-@model IEnumerable<AlexWilkinson.Models.Blog>
+@model Sakura.AspNetCore.IPagedList<AlexWilkinson.Models.Blog>
 
+@using Sakura.AspNetCore;
 @using Microsoft.AspNetCore.Identity
 @using AlexWilkinson.Models
 
@@ -7,10 +8,18 @@
 @inject UserManager<ApplicationUser> UserManager
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Blog Home";
 }
 
 <h2>Index</h2>
+@using (Html.BeginForm("Index","Blog", FormMethod.Get))
+{
+    <p>
+        Search Posts: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+
+}
 
 @if (SignInManager.IsSignedIn(User))
 {
@@ -49,6 +58,27 @@
     </div>
 
 }
+
+Page @(Model.TotalPage < Model.PageIndex ? 0 : Model.PageIndex) of @Model.TotalPage
+
+<nav aria-label="Page navigation">
+    <ul class="pagination">
+        <li>
+            <a href="?page=" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        @for (int i = 1; i < Model.TotalPage+1; i++)
+        {
+            <li><a href="?page=@i">@i</a></li>
+        }
+        <li>
+            <a href="?page=" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
 
 
 
