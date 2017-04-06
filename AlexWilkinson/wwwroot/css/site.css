@@ -1,12 +1,13 @@
-﻿body {
+﻿* {
+    color: lightslategrey;
+}
+body {
     padding-top: 50px;
     padding-bottom: 20px;
     background-color: rgb(41, 41, 41);
 
 }
-text {
-    color: lightslategrey;
-}
+
 p {
     color: lightslategrey;
 }
@@ -44,9 +45,11 @@ ul.nav a:hover {
 #homepage-main-text h1 {
     font-family: 'Ruda', sans-serif;
     font-size: 40px;
+    visibility: hidden;
 }
 #homepage-main-text h3 {
     font-family: 'Titillium Web', sans-serif;
+    visibility: hidden;
 }
 /*Pushing things away from the nav*/
 h2 {
