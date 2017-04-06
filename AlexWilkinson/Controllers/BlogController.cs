@@ -64,10 +64,10 @@ namespace AlexWilkinson.Models
                     break;
             }
 
-            int pageSize = 1;
+            int pageSize = 10;
             int pageNumber = (page ?? 1); //if page is null return 1 else return page
 
-            return View(posts.ToPagedList(pageNumber, pageSize));
+            return View(posts.ToPagedList(pageSize, pageNumber));
         }
 
         //Get : Blog/dashboard

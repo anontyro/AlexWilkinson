@@ -1,13 +1,64 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: rgb(41, 41, 41);
+
+}
+text {
+    color: lightslategrey;
+}
+p {
+    color: lightslategrey;
+}
+/*Navbar styling*/
+.navbar-inverse {
+    margin-top: 50px;
+    background-color: transparent;
+    border: 0px;
+    margin-bottom: 20px;
+}
+ul.nav a {
+    text-decoration: none;
+    background-color: transparent !important;
+    color: ##778899 !important;
+    font-size: 15px;
 }
 
+ul.nav a:hover {
+    color: #526D87 !important;
+    border-width: 0px;
+    border-style: solid;
+    background-color: transparent;
+    font-size: 13pt;
+}
+#homepage-main-text{
+    margin-top: 200px;
+    padding-left: 20px;
+    display: block;
+    width: 40%;
+    color: rgb(153, 154, 156);
+}
+.navbar-brand{
+    
+}
+#homepage-main-text h1 {
+    font-family: 'Ruda', sans-serif;
+    font-size: 40px;
+}
+#homepage-main-text h3 {
+    font-family: 'Titillium Web', sans-serif;
+}
+/*Pushing things away from the nav*/
+h2 {
+    margin-top: 40px;
+}
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+
+
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
@@ -15,12 +66,6 @@ input,
 select,
 textarea {
     max-width: 280px;
-}
-
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
 }
 
 /* buttons and links extension to use brackets: [ click me ] */
@@ -68,4 +113,9 @@ footer a:hover, a:focus{
 footer p{
 
     color: lightslategrey;
+}
+
+#pagination-total-count{
+    float: left;
+    margin-left: 30px;
 }

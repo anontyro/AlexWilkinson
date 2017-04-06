@@ -59,26 +59,55 @@
 
 }
 
-Page @(Model.TotalPage < Model.PageIndex ? 0 : Model.PageIndex) of @Model.TotalPage
 
-<nav aria-label="Page navigation">
-    <ul class="pagination">
-        <li>
-            <a href="?page=" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-        @for (int i = 1; i < Model.TotalPage+1; i++)
-        {
-            <li><a href="?page=@i">@i</a></li>
+<!--Pagination logic to generate the dynamic pagation-->
+@if (Model.TotalPage != 1)
+{
+
+    <nav aria-label="Page navigation">
+        @{ 
+            var previousPage = Model.PageIndex;
+            var nextPage = Model.PageIndex;
+            if (previousPage != 1)
+            {
+                previousPage -= 1;
+
+            }
+            if (Model.PageIndex != Model.TotalPage)
+            {
+                nextPage += 1;
+
+            }
         }
-        <li>
-            <a href="?page=" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-    </ul>
-</nav>
+        <ul class="pagination">
+            @if (Model.PageIndex != 1)
+            {
+                <li>
+                    <a href="?page=@previousPage" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            }
 
+            @for (int i = 1; i < Model.TotalPage + 1; i++)
+            {
+                <li class=@(Model.PageIndex == i ? "active" : "") ><a href="?page=@i">@i</a></li>
+            }
 
+            @if (Model.PageIndex != Model.TotalPage)
+            {
+                <li>
+                    <a href="?page=@nextPage" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            }
+
+        </ul>
+
+    </nav>
+    <div id="pagination-total-count">
+        Page @(Model.TotalPage < Model.PageIndex ? 0 : Model.PageIndex) of @Model.TotalPage
+    </div>
+}
 
