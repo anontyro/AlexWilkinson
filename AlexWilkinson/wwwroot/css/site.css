@@ -1,6 +1,10 @@
 ﻿* {
     color: lightslategrey;
 }
+a:hover {
+    color: #4196ea;
+    text-decoration: none;
+}
 body {
     padding-top: 50px;
     padding-bottom: 20px;
@@ -22,7 +26,7 @@ ul.nav a {
     text-decoration: none;
     background-color: transparent !important;
     color: ##778899 !important;
-    font-size: 15px;
+    font-size: 22px;
 }
 
 ul.nav a:hover {
@@ -30,7 +34,7 @@ ul.nav a:hover {
     border-width: 0px;
     border-style: solid;
     background-color: transparent;
-    font-size: 13pt;
+    font-size: 21px;
 }
 #homepage-main-text{
     margin-top: 200px;
@@ -39,13 +43,21 @@ ul.nav a:hover {
     width: 40%;
     color: rgb(153, 154, 156);
 }
-.navbar-brand{
-    
+.navbar-brand {
+    font-size: 30px;
+    float: left;
+    color: #4196ea !important;
+    font-family: 'Pacifico', cursive;
 }
-#homepage-main-text h1 {
-    font-family: 'Ruda', sans-serif;
-    font-size: 40px;
-    visibility: hidden;
+.navbar-brand:hover{
+    color: aliceblue !important;
+}
+
+.navbar .navbar-header{
+        height: 100px;
+}
+.highligher {
+    color: #4196ea;
 }
 #homepage-main-text h3 {
     font-family: 'Titillium Web', sans-serif;
@@ -84,11 +96,6 @@ textarea {
     padding-left: 0.5em;
 }
 
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
-}
-
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
     /* Hide captions */
@@ -104,11 +111,12 @@ footer {
     bottom:0;
 }
 footer a {
-        color: lightslategrey;
-        text-decoration: none;
-}
-footer a:hover, a:focus{
+    color: lightslategrey;
     text-decoration: none;
+}
+footer a:hover, a:focus {
+    text-decoration: none;
+    color: #4196ea !important;
 }
 #footer-social-media{
     padding-bottom: 10px;
