@@ -8,25 +8,24 @@
 @inject UserManager<ApplicationUser> UserManager
 
 @{
-    ViewData["Title"] = "Blog Home";
+    ViewData["Title"] = "Blog";
 }
 
-<h2>Index</h2>
-@using (Html.BeginForm("Index","Blog", FormMethod.Get))
+@using (Html.BeginForm("Index", "Blog", FormMethod.Get, new {@class="form-inline" }))
 {
-    <p>
-        Search Posts: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-        <input type="submit" value="Search" />
-    </p>
-
+    <div class="row">
+        <div class="col-xs-2"><h1><span class="highligher">@ViewData["Title"]</span></h1></div>
+        
+        <div class="col-xs-10 blog-search-bar">
+            <p>
+                Search Posts: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new {@class="form-control" })
+                <input type="submit" class="btn btn-default" value="Search" />
+            </p>
+        </div>
+    </div>
 }
 
-@if (SignInManager.IsSignedIn(User))
-{
-    <p>
-        <a asp-action="Create"><i class="fa fa-pencil"></i> Create a Post</a>
-    </p>
-}
+
 
 @foreach (var item in Model)
 {
@@ -36,26 +35,48 @@
     if(contentBlurb.Length > subLen)
     {
         contentBlurb = contentBlurb.Substring(0, subLen);
+        contentBlurb += "...";
     }
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            @Html.DisplayFor(modelItem => item.Title)
+    <div class="main-blog-container col-xs-offset1 col-xs-5">
+        <div class="blog-list-header">
+            <h3 class="highligher">@Html.DisplayFor(modelItem => item.Title) </h3>
         </div>
-        <div class="panel-body">
-            @Html.DisplayFor(modelItem => contentBlurb)
 
+        <div class="blog-list-image">
+            @{
+                var imgLocation = "../images/blog";
+                if (item.CoverImg == null)
+                {
+                    <img src="@imgLocation/default.jpg" class="img-responsive" />
+                }
+                else
+                {
+                    <img src="@imgLocation/@item.CoverImg" class="img-responsive" />
+                }
+            }
+
+        </div>
+
+        <div class="blog-list-body">
+            @Html.DisplayFor(modelItem => contentBlurb)
+            <br />
+            <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-default">Contiune Reading</a>
         </div>
 
         @if (SignInManager.IsSignedIn(User))
         {
-            <div class="panel-footer">
-               <a asp-action="Edit" asp-route-id="@item.ID"> Edit</a> | 
-               <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            <div class="blog-admin-controls">
+                <a asp-action="Edit" asp-route-id="@item.ID"> Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
             </div>
         }
-
     </div>
+
+
+
+
+
 
 }
 
