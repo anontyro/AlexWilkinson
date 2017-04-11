@@ -1,5 +1,11 @@
 @model AlexWilkinson.Models.Blog
 
+@using Microsoft.AspNetCore.Identity
+@using AlexWilkinson.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
 @{
     ViewData["Title"] = "Create";
 }
@@ -28,7 +34,8 @@
         <div class="form-group">
             <label asp-for="Author" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Author" class="form-control" />
+                <input asp-for="Author" class="form-control" 
+                       value="@UserManager.GetUserName(User)" readonly/>
                 <span asp-validation-for="Author" class="text-danger"></span>
             </div>
         </div>

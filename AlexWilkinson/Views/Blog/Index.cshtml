@@ -13,13 +13,16 @@
 
 @using (Html.BeginForm("Index", "Blog", FormMethod.Get, new {@class="form-inline" }))
 {
-    <div class="row">
-        <div class="col-xs-2"><h1><span class="highligher">@ViewData["Title"]</span></h1></div>
+    <div class="row container-fluid">
+        <div class="col-xs-2"><h1 class="highligher">@ViewData["Title"]</h1></div>
         
-        <div class="col-xs-10 blog-search-bar">
+        <div class="col-xs-offset-6 blog-search-bar input-group">
             <p>
-                Search Posts: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new {@class="form-control" })
-                <input type="submit" class="btn btn-default" value="Search" />
+                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string,
+                    new {@class="form-control", placeholder = "Search Posts" })
+                <span class="input-group-btn">
+                    <input type="submit" class="btn btn-default" value="Search" />
+                </span>
             </p>
         </div>
     </div>
@@ -39,8 +42,18 @@
     }
 
     <div class="main-blog-container col-xs-offset1 col-xs-5">
-        <div class="blog-list-header">
-            <h3 class="highligher">@Html.DisplayFor(modelItem => item.Title) </h3>
+        <div class="blog-list-header ">
+            <div>
+                <h3 class="highligher">@Html.DisplayFor(modelItem => item.Title) </h3>
+            </div>
+        </div>
+        <div class="col-xs-4  blog-publish-time">
+            <p><i class="fa fa-calendar-o"></i> On: @Html.DisplayFor(modelItem => item.Published)</p>
+
+        </div>
+        <div class="col-xs-8  blog-author text-left">
+            <p><i class="fa  fa-group"></i> By: @Html.DisplayFor(modelItem => item.Author)</p>
+
         </div>
 
         <div class="blog-list-image">
@@ -60,8 +73,9 @@
 
         <div class="blog-list-body">
             @Html.DisplayFor(modelItem => contentBlurb)
-            <br />
-            <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-default">Contiune Reading</a>
+        </div>
+        <div class="blog-list-contiune">
+            <a asp-action="Details" asp-route-id="@item.ID" class="blog-btn-style">Contiune Reading</a>
         </div>
 
         @if (SignInManager.IsSignedIn(User))

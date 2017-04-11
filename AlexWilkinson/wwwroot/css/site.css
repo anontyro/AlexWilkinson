@@ -1,15 +1,16 @@
 ﻿* {
     color: rgb(153, 154, 156);
 }
+
 a:hover {
     color: #4196ea;
     text-decoration: none;
 }
+
 body {
     padding-top: 50px;
     padding-bottom: 20px;
     background-color: rgb(41, 41, 41);
-
 }
 
 p {
@@ -19,18 +20,21 @@ p {
 .user-detail-above-nav {
     text-align: center;
 }
-.user-detail-above-nav a {
-    color: #4196ea;
-}
-.user-detail-above-nav a:hover {
-    color: lightslategrey;
-}
-.navbar-inverse {
 
+    .user-detail-above-nav a {
+        color: #4196ea;
+    }
+
+        .user-detail-above-nav a:hover {
+            color: lightslategrey;
+        }
+
+.navbar-inverse {
     background-color: transparent;
     border: 0px;
     margin-bottom: 20px;
 }
+
 ul.nav a {
     text-decoration: none;
     background-color: transparent !important;
@@ -38,12 +42,13 @@ ul.nav a {
     font-size: 22px;
 }
 
-ul.nav a:hover {
-    color: #526D87 !important;
-    border-width: 0px;
-    border-style: solid;
-    background-color: transparent;
-}
+    ul.nav a:hover {
+        color: #526D87 !important;
+        border-width: 0px;
+        border-style: solid;
+        background-color: transparent;
+    }
+
 .navbar-brand {
     font-size: 30px;
     float: left;
@@ -51,32 +56,78 @@ ul.nav a:hover {
     font-family: 'Pacifico', cursive;
 }
 
-.navbar-brand:hover {
-    color: aliceblue !important;
-}
+    .navbar-brand:hover {
+        color: aliceblue !important;
+    }
 /*Homepage Style*/
-#homepage-main-text{
+#homepage-main-text {
     margin-top: 200px;
     padding-left: 20px;
     display: block;
     width: 40%;
     color: rgb(153, 154, 156);
 }
-#homepage-main-text h3 {
-    font-family: 'Titillium Web', sans-serif;
-    visibility: hidden;
-}
+
+    #homepage-main-text h3 {
+        font-family: 'Titillium Web', sans-serif;
+        visibility: hidden;
+    }
 /*Resumepage Style*/
 
 /*Blogpage Style*/
-.blog-search-bar{
+.blog-search-bar {
     padding-top: 30px;
-    text-align:right;
+    text-align: right;
+    padding-left: 40px;
 }
-.main-blog-container{
+
+.main-blog-container {
     margin: 10px 20px 40px 20px;
 }
+
+.blog-list-body {
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.blog-btn-style {
+    background-color: #4196ea;
+    border: 1px solid #4e6096;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 20px;
+    padding: 10px 20px;
+    text-decoration: none;
+    text-shadow: -1px 1px 2px #283966;
+}
+
+.blog-btn-style:hover {
+    background-color: #3e454f;
+    color: #ffffff;
+}
+
+.blog-btn-style:active {
+    position: relative;
+    top: 1px;
+}
+.blog-publish-time{
+    padding:0;
+}
+
+@media (max-width: 1000px) {
+    .main-blog-container {
+        width: 85%;
+    }
+
+    .blog-list-continue {
+        text-align: center;
+    }
+}
+
 /*Portfoliopage Style*/
+
 /*Aboutpage Style*/
 #aboutpage-main-text {
     display: block;
@@ -98,8 +149,6 @@ h2 {
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-
-
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
@@ -128,13 +177,13 @@ textarea {
         background-color: #f7f7f7;
     }
 
-    .collapsing ul li a, .in ul li a {
-        color: #555 !important;
-    }
+        .collapsing ul li a, .in ul li a {
+            color: #555 !important;
+        }
 
-    .collapsing ul li a:hover, .in ul li a:hover {
-        color: #f1f1f1 !important;
-    }
+            .collapsing ul li a:hover, .in ul li a:hover {
+                color: #f1f1f1 !important;
+            }
 
     .navbar-header {
         float: none;
@@ -167,18 +216,19 @@ textarea {
         margin-top: 7.5px;
     }
 
-    .navbar-nav > li {
-        float: none;
-    }
+        .navbar-nav > li {
+            float: none;
+        }
 
-    .navbar-nav > li > a {
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
+            .navbar-nav > li > a {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
 
     .collapse.in {
         display: block !important;
     }
+
     #homepage-main-text {
         margin-top: 60px;
         padding-left: 20px;
@@ -186,39 +236,43 @@ textarea {
         width: 100%;
         color: rgb(153, 154, 156);
     }
+
     footer {
         margin: auto;
         width: 100%;
         position: relative;
         bottom: 0;
     }
-
 }
 
 /*Footer styling*/
 footer {
-    margin: auto;
     width: 100%;
     position: fixed;
-    bottom:0;
+    bottom: 0;
+    background-color: rgb(41, 41, 41);
+    margin-top: 10px;
 }
-footer a {
-    color: lightslategrey;
-    text-decoration: none;
-}
-footer a:hover, a:focus {
-    text-decoration: none;
-    color: #4196ea !important;
-}
-#footer-social-media{
+
+    footer a {
+        color: lightslategrey;
+        text-decoration: none;
+    }
+
+        footer a:hover, a:focus {
+            text-decoration: none;
+            color: #4196ea !important;
+        }
+
+#footer-social-media {
     padding-bottom: 10px;
 }
-footer p{
 
+footer p {
     color: lightslategrey;
 }
 
-#pagination-total-count{
+#pagination-total-count {
     float: left;
     margin-left: 30px;
 }

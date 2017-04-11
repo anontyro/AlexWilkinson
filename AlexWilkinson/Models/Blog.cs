@@ -20,6 +20,7 @@ namespace AlexWilkinson.Models
         public DateTime Created { get; set; }
 
         [Display(Name = "Publish Date")]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Published { get; set; }
 
         public bool Draft { get; set; }
