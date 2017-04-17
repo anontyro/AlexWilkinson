@@ -1,66 +1,62 @@
 @model AlexWilkinson.Models.Blog
 
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+
+
 @{
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<h2 class="highligher">@Html.DisplayFor(model => model.Title)</h2>
 
 <div>
-    <h4>Blog</h4>
+    
+    <div class="col-xs-4  blog-publish-time">
+        <p><i class="fa fa-calendar-o"></i> On: @Html.DisplayFor(model => model.Published)</p>
+
+    </div>
+    <div class="col-xs-8  blog-author text-right">
+        <p><i class="fa  fa-group"></i> By: @Html.DisplayFor(model => model.Author)</p>
+
+    </div>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.UrlSlug)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.UrlSlug)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Author)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Author)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CoverImg)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CoverImg)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Body)
-        </dt>
-        <dd>
+
+    <div class="blog-list-image">
+        @{
+            
+            var imgLocation = "/images/blog";
+            if (Model.CoverImg == null)
+            {
+                <img src="@imgLocation/default.jpg" class="img-responsive" />
+            }
+            else
+            {
+                <img src="@imgLocation/@Model.CoverImg" class="img-responsive" />
+            }
+        }
+
+    </div>
+
+    <hr />
+
             @Html.DisplayFor(model => model.Body)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Created)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Created)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Published)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Published)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Draft)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Draft)
-        </dd>
-    </dl>
+     
+        
+
 </div>
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="blog-admin-controls">
+        <a asp-action="Edit" asp-route-id="@Model.ID"> Edit</a> |
+        <a asp-action="Delete" asp-route-id="@Model.ID">Delete</a>
+    </div>
+}
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+
