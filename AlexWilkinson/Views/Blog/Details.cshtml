@@ -43,9 +43,9 @@
     </div>
 
     <hr />
-
-            @Html.DisplayFor(model => model.Body)
-     
+<div>
+    @Html.Raw(Model.Body) <!--Renders the HTML correctly-->
+</div>
         
 
 </div>

@@ -28,6 +28,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.1.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.0" />
     <PackageReference Include="Sakura.AspNetCore.PagedList" Version="2.0.1" />
+    <PackageReference Include="TagHelperSamples.Markdown" Version="1.1.1" />
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.0" />
