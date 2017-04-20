@@ -33,7 +33,7 @@
     <div class="col-xs-offset-6 user-detail-above-nav">   
         @if (SignInManager.IsSignedIn(User))    
         {
-        <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)</a>
+        <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Logged in as: @UserManager.GetUserName(User)</a>
         }
     </div>
 

@@ -2,10 +2,12 @@ using AlexWilkinson.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Sakura.AspNetCore;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Sakura.AspNetCore;
 
 namespace AlexWilkinson.Models
 {
@@ -77,6 +79,7 @@ namespace AlexWilkinson.Models
         }
 
         // GET: Blogs/Details/5
+    
         [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
@@ -94,10 +97,25 @@ namespace AlexWilkinson.Models
 
             return View(blog);
         }
+    
 
         // GET: Blogs/Create
         public IActionResult Create()
         {
+            var filePath = "../alexwilkinson/wwwroot/images/blog";
+            List<string> imgList = new List<string>();
+            foreach(string file in Directory.EnumerateFiles(
+                filePath,
+                "*",
+                SearchOption.TopDirectoryOnly)
+                )
+            {
+                imgList.Add(file.Substring(filePath.Length) );
+            }
+
+            IEnumerable<string> imgEnum = (IEnumerable<string>)imgList;
+
+           ViewBag.imgList = imgEnum;
             return View();
         }
 
