@@ -1,6 +1,6 @@
 # AlexWilkinson
 My Homepage
-===
+---
 #### Development - Active
 I wrote my current homepage (alexwilkinson.co) in Django and it was created very much in the early days of my programming journey.
 Although it taught me a lot I feel it has awful design and is generally a bit of a mess. I heard that ASP finally went crossplatform
